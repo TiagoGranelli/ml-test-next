@@ -44,7 +44,7 @@ router.get('/api/items', async (req: Request, res: Response) => {
 });
 
 // Get item details by ID
-router.get('/api/items/:id', async (req: Request, res: Response) => {
+router.get('/api/product/:id', async (req: Request, res: Response) => {
     const id: string = req.params.id;
     try {
         const response = await axios.get(`https://api.mercadolibre.com/items/${id}`);
