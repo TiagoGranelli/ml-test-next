@@ -6,25 +6,10 @@
     flex-direction: column;
     align-items: center;
     margin: 0 20px;
-    .BreadCrumb{
-        display: flex;
-        margin: 16px 0;
-        font-size: 0.875rem;
-        color: #999;
-        li{
-            display: flex;
-            align-items: center;
-            &:after{
-                content: ">";
-                margin: 0 10px;
-            }
-            &:last-child{
-                &:after{
-                    content: '';
-                }
-            }
-        }
-        
+
+    .BreadCrumbContainer{
+        max-width: 1000px;
+        width: 100%;
     }
     .ProductList{
         max-width: 1000px;

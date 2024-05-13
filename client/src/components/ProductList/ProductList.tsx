@@ -52,8 +52,10 @@ const ProductList: React.FC = () => {
 
   return (
     <div className={styles.ProductListContainer}>
+      <div className={styles.BreadCrumbContainer}>
+      <BreadCrumb categories={categories} ></BreadCrumb>
+      </div>
       <ol className={styles.ProductList}>
-        <BreadCrumb categories={categories} ></BreadCrumb>
         {products?.map((product) => ( 
           <li className={styles.Product} key={product.id}>
             <Link className={styles.ProductContainer} href={`/${product.id}`}>
