@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import styles from "./ProductList.module.scss";
 import BreadCrumb from '../BreadCrumb';
+import LoadingDots from '../LoadingDots';
 
 interface Product { 
   id: string;
@@ -23,24 +24,31 @@ interface Product {
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const search  = searchParams.get('search');
 
   useEffect(() => {
-    const fetchProducts = async () => { 
+    const fetchProducts = async () => {
+      if (!search) return;
+      setIsLoading(true);  // Start loading
       try {
-        const response = await axios.get<{ items: Product[]; categories: string[] }>(`http://localhost:3001/api/items?search=${search}`); 
+        const response = await axios.get<{ items: Product[]; categories: string[] }>(`http://localhost:3001/api/items?search=${search}`);
         setProducts(response.data.items);
         setCategories(response.data.categories);
       } catch (error) {
         console.error('Erro ao buscar produtos:', error);
+      } finally {
+        setIsLoading(false);  // End loading
       }
     };
-
-    if (search) {  
-      fetchProducts();
-    }
+  
+    fetchProducts();
   }, [search]);
+  
+  if (isLoading) {
+    return <LoadingDots />;
+  }
 
   return (
     <div className={styles.ProductListContainer}>

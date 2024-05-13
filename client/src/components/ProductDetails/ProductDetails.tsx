@@ -4,6 +4,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import styles from "./ProductDetails.module.scss";
 import BreadCrumb from '../BreadCrumb';
+import LoadingDots from '../LoadingDots';
 interface Product {
   id: string;
   title: string;
@@ -42,7 +43,7 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
   }, [productId]);
 
   if (!product) {
-    return <div></div>;
+    return <LoadingDots />;
   }
 
   return (
