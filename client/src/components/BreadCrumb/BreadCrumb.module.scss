@@ -7,9 +7,11 @@
         font-size: 0.875rem;
         color: #999;
         background-color: $bg-gray;
+        flex-wrap: wrap;
         li{
             display: flex;
             align-items: center;
+            
             &:after{
                 content: ">";
                 margin: 0 10px;

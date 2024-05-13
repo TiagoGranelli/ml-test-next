@@ -14,8 +14,15 @@
         margin-bottom: 50px;
         .flexContainer{
             display: flex;
-            .ProductImage{
-                object-fit: contain;
+            .imageContainer{
+                max-width: 680px;
+                width: 100%;
+                max-height: 680px;
+
+                .ProductImage{
+                    object-fit: contain;
+                    position: relative !important;
+                }
             }
             .ProductInfo{
                 display: flex;
@@ -24,6 +31,7 @@
                 color: $base-black;
                 padding: 32px;
                 padding-left: 16px;
+                min-width: 250px;
 
                 .ProductCondition{
                     margin-bottom: 16px;
@@ -39,6 +47,7 @@
                     align-items: center;
                     gap: 8px;
                 }
+
                 .ProductBuyBtn{
                     background-color: $base-blue;
                     color: #fff;
@@ -75,4 +84,30 @@
         }
     }
 
+    @media (max-width: 768px){
+        .Product{
+            .flexContainer{
+                flex-direction: column;
+                .imageContainer{
+                    max-width: 100%;
+                    max-height: 100%;
+                    .ProductImage{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .ProductInfo{
+                    padding: 16px;
+                    padding-top: 0;
+                    min-width: 0;
+                    .ProductPrice{
+                        font-size: 2rem;
+                    }
+                }
+            }
+            .ProductDescription{
+                padding: 16px;
+            }
+        }
+    }
 }

@@ -61,7 +61,7 @@ const ProductList: React.FC = () => {
             <Link className={styles.ProductContainer} href={`/${product.id}`}>
               <Image className={styles.ProductImage} src={product.picture_url} alt={product.title} width={180} height={180} />
               <div className={styles.ProductInfoContainer}>
-                <p className={styles.ProductPrice}>
+                <span className={styles.ProductPrice}>
                   <span>
                     {product.price.currency ? 'R$ ' : ''}
                     </span>
@@ -76,7 +76,7 @@ const ProductList: React.FC = () => {
                     <Image className={styles.FreeShippingTag} src="/ic_shipping.png" width={18} height={18} alt="Frete grátis"/>
                   </span>
                   }
-                </p>
+                </span>
                 <h2 className={styles.ProductTitle}>{product.title}</h2>
                 <p>{product.condition.toLowerCase() !== 'new' ? 'Usado' : ''}</p>
                 

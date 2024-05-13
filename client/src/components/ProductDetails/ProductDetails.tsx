@@ -51,7 +51,9 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
       <div className={styles.Product}>
       <BreadCrumb categories={categories} />
         <div className={styles.flexContainer}>
-        <Image className={styles.ProductImage} priority={true} src={product.picture_url} alt={product.title}  width={680} height={680} />
+          <div className={styles.imageContainer}>
+            <Image className={styles.ProductImage} fill={true} priority={true} src={product.picture_url} alt={product.title} />
+          </div>
         <div className={styles.ProductInfo}>
           <div className={styles.ProductCondition}>
             <span>{product.condition.toLowerCase() === 'new' ? 'Novo' : 'Usado'}</span>
