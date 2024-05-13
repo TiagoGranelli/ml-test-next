@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
-
+import styles from "./ProductDetails.module.scss";
 interface Product {
   id: string;
   title: string;
@@ -29,7 +29,7 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get<{ item: Product; categories: string[] }>(`http://localhost:3001/api/product/${productId}`);
+        const response = await axios.get<{ item: Product; categories: string[] }>(`http://localhost:3001/api/items/${productId}`);
         setProduct(response.data.item);
         setCategories(response.data.categories);
       } catch (error) {
@@ -45,19 +45,35 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
   }
 
   return (
-    <div>
-      <h2>{product.title}</h2>
-      <Image src={product.picture_url} alt={product.title}  width={100} height={100}/>
-      <p>Preço: {product.price.amount}</p>
-      <p>Condição: {product.condition}</p>
-      <p>Frete grátis: {product.free_shipping ? 'Sim' : 'Não'}</p>
-      <p>Quantidade vendida: {product.sold_qty}</p>
-      <p>Descrição: {product.description}</p>
-      <ul>
-        {categories?.map((category) => (
-          <li key={category}>{category}</li>
-        ))}
-      </ul>
+    <div className={styles.ProductDetailsContainer}>
+      <div className={styles.Product}>
+        <div className={styles.flexContainer}>
+        <Image priority={true} src={product.picture_url} alt={product.title}  width={680} height={800}/>
+        <div className={styles.ProductInfo}>
+          <span>{product.condition.toLowerCase() === 'new' ? 'Novo' : 'Usado'}</span>
+          <span>Quantidade vendida: {product.sold_qty}</span>
+          <h2>{product.title}</h2>
+          <p className={styles.ProductPrice}>
+            <span>
+              {product.price.currency ? 'R$ ' : ''}
+              </span>
+            <span>
+              {product.price.amount}
+            </span>
+            <span>
+              {product.price.decimals ? `,${product.price.decimals}` : ''}
+            </span>
+            {product.free_shipping && 
+            <span>
+              <Image className={styles.FreeShippingTag} src="/ic_shipping.png" width={18} height={18} alt="Frete grátis"/>
+            </span>
+            }
+          </p>
+          <p>Frete grátis: {product.free_shipping ? 'Sim' : 'Não'}</p>
+        </div>
+        </div>
+        <p className={styles.ProductDescription}>Descrição: {product.description}</p>
+      </div>
     </div>
   );
 };
