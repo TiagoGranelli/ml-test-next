@@ -29,14 +29,29 @@
                 .ProductInfoContainer{
                     flex: 1;
                     margin-left: 16px;
-                    .ProductPrice{
-                        font-size: 1.5rem;
+
+                    .ProductPriceContainer{
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
                         margin-bottom: 32px;
-                    }
-                    .FreeShippingTag{
-                        margin-left: 8px;
+                        margin-top: 16px;
+                        .ProductPrice{
+                            display: flex;  
+                            font-size: 1.5rem;
+                            .ProductAmount{
+                                margin-left: 16px;
+                            }
+                            .ProductPriceDecimals{
+                                font-size: 1rem;
+                                margin-left: 4px;
+                                line-height: 1.5rem;
+                            }
+                        }
+                        
                     }
                     .ProductTitle{
+                        margin-top: 0;
                         max-width: 300px;
                         font-size: 1.125rem;
                     }
@@ -60,7 +75,8 @@
                         margin-left: 0;
                         display: flex;
                         flex-direction: column;
-                        .ProductPrice{
+                        
+                        .ProductPriceContainer{
                             margin-bottom: 16px;
                             order: 2;
                             margin-top: 0;

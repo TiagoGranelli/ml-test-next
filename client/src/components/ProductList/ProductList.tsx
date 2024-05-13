@@ -61,22 +61,24 @@ const ProductList: React.FC = () => {
             <Link className={styles.ProductContainer} href={`/${product.id}`}>
               <Image className={styles.ProductImage} src={product.picture_url} alt={product.title} width={180} height={180} />
               <div className={styles.ProductInfoContainer}>
-                <span className={styles.ProductPrice}>
-                  <span>
-                    {product.price.currency ? 'R$ ' : ''}
-                    </span>
-                  <span>
-                    {product.price.amount}
+              <span className={styles.ProductPriceContainer}>
+                <div className={styles.ProductPrice}>
+                <span>
+                  {product.price.currency ? 'R$ ' : ''}
                   </span>
-                  <span>
-                    {product.price.decimals ? `,${product.price.decimals}` : ''}
-                  </span>
-                  {product.free_shipping && 
-                  <span>
-                    <Image className={styles.FreeShippingTag} src="/ic_shipping.png" width={18} height={18} alt="Frete grátis"/>
-                  </span>
-                  }
+                <span className={styles.ProductAmount}>
+                  {product.price.amount}
                 </span>
+                <span className={styles.ProductPriceDecimals}>
+                  {product.price.decimals ? `${product.price.decimals}` : ''}
+                </span>
+                </div>
+                {product.free_shipping && 
+                
+                  <Image className={styles.FreeShippingTag} src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
+                
+                }
+              </span>
                 <h2 className={styles.ProductTitle}>{product.title}</h2>
                 <p>{product.condition.toLowerCase() !== 'new' ? 'Usado' : ''}</p>
                 

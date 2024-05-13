@@ -63,17 +63,17 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
             */}
           </div>
           <h1>{product.title}</h1>
-          <span className={styles.ProductPrice}>
-            <div>
-            <span>
-              {product.price.currency ? 'R$ ' : ''}
+          <span className={styles.ProductPriceContainer}>
+            <div className={styles.ProductPrice}>
+              <span>
+                {product.price.currency ? 'R$ ' : ''}
+                </span>
+              <span className={styles.ProductAmount}>
+                {product.price.amount}
               </span>
-            <span>
-              {product.price.amount}
-            </span>
-            <span>
-              {product.price.decimals ? `,${product.price.decimals}` : ''}
-            </span>
+              <span className={styles.ProductPriceDecimals}>
+                {product.price.decimals === 0 ? '00' : product.price.decimals}
+              </span>
             </div>
             {product.free_shipping && 
             
