@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import styles from "./ProductDetails.module.scss";
+import BreadCrumb from '../BreadCrumb';
 interface Product {
   id: string;
   title: string;
@@ -14,7 +15,7 @@ interface Product {
   picture_url: string;
   condition: string;
   free_shipping: boolean;
-  sold_qty: number;
+  sold_quantity: number;
   description: string;
 }
 
@@ -46,12 +47,13 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
 
   return (
     <div className={styles.ProductDetailsContainer}>
+      <BreadCrumb categories={categories} ></BreadCrumb>
       <div className={styles.Product}>
         <div className={styles.flexContainer}>
         <Image priority={true} src={product.picture_url} alt={product.title}  width={680} height={800}/>
         <div className={styles.ProductInfo}>
           <span>{product.condition.toLowerCase() === 'new' ? 'Novo' : 'Usado'}</span>
-          <span>Quantidade vendida: {product.sold_qty}</span>
+          <span>Quantidade vendida: {product.sold_quantity}</span>
           <h2>{product.title}</h2>
           <p className={styles.ProductPrice}>
             <span>

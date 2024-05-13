@@ -1,0 +1,22 @@
+.BreadCrumbContainer{
+    .BreadCrumb{
+        display: flex;
+        margin: 16px 0;
+        font-size: 14px;
+        color: #999;
+        li{
+            display: flex;
+            align-items: center;
+            &:after{
+                content: ">";
+                margin: 0 10px;
+            }
+            &:last-child{
+                &:after{
+                    content: '';
+                }
+            }
+        }
+        
+    }
+}

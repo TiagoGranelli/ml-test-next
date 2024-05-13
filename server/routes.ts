@@ -118,7 +118,7 @@ router.get('/api/items/:id', async (req: Request, res: Response) => {
                 picture_url: item.pictures[0].url,
                 condition: item.condition,
                 free_shipping: item.shipping.free_shipping,
-                sold_qty: item.sold_quantity, // a api do Mercado Livre não está retornando a quantidade vendida
+                sold_quantity: item.sold_quantity ? item.sold_quantity : null, // a api do Mercado Livre não está retornando a quantidade vendida
                 description: description.plain_text
             }
         });

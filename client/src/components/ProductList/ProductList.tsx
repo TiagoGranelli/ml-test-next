@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import styles from "./ProductList.module.scss";
+import BreadCrumb from '../BreadCrumb';
 
 interface Product { 
   id: string;
@@ -44,11 +45,7 @@ const ProductList: React.FC = () => {
   return (
     <div className={styles.ProductListContainer}>
       <ol className={styles.ProductList}>
-        <ul className={styles.BreadCrumb}>
-          {categories?.map((category) => (
-            <li key={category}>{category}</li>
-          ))} 
-        </ul>
+        <BreadCrumb categories={categories} ></BreadCrumb>
         {products?.map((product) => ( 
           <li className={styles.Product} key={product.id}>
             <Link className={styles.ProductContainer} href={`/${product.id}`}>
