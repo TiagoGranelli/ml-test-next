@@ -18,7 +18,10 @@
                 max-width: 680px;
                 width: 100%;
                 max-height: 680px;
-
+                height: 100%;
+                padding-top: 32px;
+                padding-left: 32px;
+        
                 .ProductImage{
                     object-fit: contain;
                     position: relative !important;
