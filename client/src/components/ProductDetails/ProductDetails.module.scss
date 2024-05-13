@@ -42,7 +42,8 @@
                 }
                 .ProductPriceContainer{
                     font-size: 2.875rem;
-                    margin: 32px 0;
+                    margin-top: 32px;
+                    margin-bottom: 16px;
                     display: flex;
                     align-items: center;
                     gap: 16px;
@@ -60,8 +61,19 @@
                     }
                     
                 }
+                .FreeShippingTag{
+                    background: #FFFFFF;
+                    color: #00A650;
+                    padding: 0;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
 
                 .ProductBuyBtn{
+                    margin-top: 32px;
                     background-color: $base-blue;
                     color: #fff;
                     border-color: transparent;

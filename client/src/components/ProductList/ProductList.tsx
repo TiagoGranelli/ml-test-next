@@ -73,12 +73,13 @@ const ProductList: React.FC = () => {
                   {product.price.decimals ? `${product.price.decimals}` : ''}
                 </span>
                 </div>
-                {product.free_shipping && 
-                
-                  <Image className={styles.FreeShippingTag} src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
-                
-                }
               </span>
+                {product.free_shipping && 
+                  <div className={styles.FreeShippingTag}>
+                    <Image src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
+                    <span>Frete grátis</span>
+                  </div>
+                }
                 <h2 className={styles.ProductTitle}>{product.title}</h2>
                 <p>{product.condition.toLowerCase() !== 'new' ? 'Usado' : ''}</p>
                 

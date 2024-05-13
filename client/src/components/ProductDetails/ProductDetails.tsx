@@ -75,12 +75,13 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
                 {product.price.decimals === 0 ? '00' : product.price.decimals}
               </span>
             </div>
-            {product.free_shipping && 
-            
-              <Image className={styles.FreeShippingTag} src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
-            
-            }
           </span>
+          {product.free_shipping && 
+            <div className={styles.FreeShippingTag}>
+              <Image src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
+              <span>Frete grátis</span>
+            </div>
+          }
           <a href={`https://www.mercadolivre.com.br`} target="_blank" >
             <button className={styles.ProductBuyBtn}>
               Comprar
