@@ -11,20 +11,68 @@
         max-width: 1000px;
         width: 100%;
         background-color: #fff;
+        margin-bottom: 50px;
         .flexContainer{
             display: flex;
+            .ProductImage{
+                object-fit: contain;
+            }
             .ProductInfo{
                 display: flex;
                 flex: 1;
                 flex-direction: column;
+                color: $base-black;
+                padding: 32px;
+                padding-left: 16px;
+
+                .ProductCondition{
+                    margin-bottom: 16px;
+                }
+                h1{
+                    font-size: 1.5rem;
+                    margin: 0;
+                }
+                .ProductPrice{
+                    font-size: 2.875rem;
+                    margin: 32px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                .ProductBuyBtn{
+                    background-color: $base-blue;
+                    color: #fff;
+                    border-color: transparent;
+                    border-radius: 6px;
+                    width: 100%;
+                    height: 48px;
+                    box-shadow: 0 0 0 0 #fff;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    &:hover{
+                        background-color: #2968c8;
+                    }
+                    &:active{
+                        background-color: #1f4e96;
+                    }
+                }
+
+               
+            }
+        }
+        .ProductDescription{
+            padding: 32px;
+            h2{
+                font-size: 1.75rem;
+                color: $base-black;
+                margin: 0;
+            }
+            p{
+                max-width: 680px;
+                font-size: 1rem;
             }
         }
     }
-    .ProductDescription{
-        display: flex;
-        max-width: 1000px;
-        width: 100%;
-        background-color: #fff;
-        margin: 0;
-    }
+
 }

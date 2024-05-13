@@ -1,9 +1,12 @@
+@import '../../styles/variables.scss';
+
 .BreadCrumbContainer{
     .BreadCrumb{
         display: flex;
-        margin: 16px 0;
-        font-size: 14px;
+        padding: 16px 0;
+        font-size: 0.875rem;
         color: #999;
+        background-color: $bg-gray;
         li{
             display: flex;
             align-items: center;

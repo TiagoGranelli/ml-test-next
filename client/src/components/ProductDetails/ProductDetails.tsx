@@ -42,20 +42,26 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
   }, [productId]);
 
   if (!product) {
-    return <div>Carregando...</div>;
+    return <div></div>;
   }
 
   return (
     <div className={styles.ProductDetailsContainer}>
-      <BreadCrumb categories={categories} ></BreadCrumb>
       <div className={styles.Product}>
+      <BreadCrumb categories={categories} />
         <div className={styles.flexContainer}>
-        <Image priority={true} src={product.picture_url} alt={product.title}  width={680} height={800}/>
+        <Image className={styles.ProductImage} priority={true} src={product.picture_url} alt={product.title}  width={680} height={680} />
         <div className={styles.ProductInfo}>
-          <span>{product.condition.toLowerCase() === 'new' ? 'Novo' : 'Usado'}</span>
-          <span>Quantidade vendida: {product.sold_quantity}</span>
-          <h2>{product.title}</h2>
-          <p className={styles.ProductPrice}>
+          <div className={styles.ProductCondition}>
+            <span>{product.condition.toLowerCase() === 'new' ? 'Novo' : 'Usado'}</span>
+            <span> - 234 vendidos {product.sold_quantity ?? product.sold_quantity}</span>{/* //TODO
+            A API items/:id do mercadoLivre não está retornando o sold_quantity
+            https://global-selling.mercadolibre.com/devsite/items-and-searches-global-selling 
+            */}
+          </div>
+          <h1>{product.title}</h1>
+          <span className={styles.ProductPrice}>
+            <div>
             <span>
               {product.price.currency ? 'R$ ' : ''}
               </span>
@@ -65,16 +71,26 @@ const ProductDetails = ({productId}: ProductDetailsProps) => {
             <span>
               {product.price.decimals ? `,${product.price.decimals}` : ''}
             </span>
+            </div>
             {product.free_shipping && 
-            <span>
-              <Image className={styles.FreeShippingTag} src="/ic_shipping.png" width={18} height={18} alt="Frete grátis"/>
-            </span>
+            
+              <Image className={styles.FreeShippingTag} src="/ic_shipping@2x.png.png" width={18} height={18} alt="Frete grátis"/>
+            
             }
-          </p>
-          <p>Frete grátis: {product.free_shipping ? 'Sim' : 'Não'}</p>
+          </span>
+          <a href={`https://www.mercadolivre.com.br`} target="_blank" >
+            <button className={styles.ProductBuyBtn}>
+              Comprar
+            </button>
+          </a>
         </div>
         </div>
-        <p className={styles.ProductDescription}>Descrição: {product.description}</p>
+        <div className={styles.ProductDescription}>
+          <h2>
+            Descrição
+          </h2>
+          <p>{product.description}</p>
+        </div>
       </div>
     </div>
   );
