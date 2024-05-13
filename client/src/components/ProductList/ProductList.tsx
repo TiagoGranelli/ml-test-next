@@ -4,6 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import styles from "./ProductList.module.scss";
 
 interface Product { 
   id: string;
@@ -41,26 +42,44 @@ const ProductList: React.FC = () => {
   }, [search]);
 
   return (
-    <div>
-      <h2>Resultados da pesquisa para: {search}</h2>
-      <ul>
-        {categories?.map((category) => (
-          <li key={category}>{category}</li>
-        ))}
-      </ul> 
-      <ul>
+    <div className={styles.ProductListContainer}>
+      <ol className={styles.ProductList}>
+        <ul className={styles.BreadCrumb}>
+          {categories?.map((category) => (
+            <li key={category}>{category}</li>
+          ))} 
+        </ul>
         {products?.map((product) => ( 
-          <li key={product.id}>
-            <Link href={`/product/${product.id}`}> 
-              <Image src={product.picture_url} alt={product.title} width={100} height={100} />
-              <h3>{product.title}</h3>
-              <p>Preço: {product.price.amount}</p>
-              <p>Condição: {product.condition}</p>
-              <p>Frete grátis: {product.free_shipping ? 'Sim' : 'Não'}</p>
+          <li className={styles.Product} key={product.id}>
+            <Link className={styles.ProductContainer} href={`/${product.id}`}>
+              <Image className={styles.ProductImage} src={product.picture_url} alt={product.title} width={180} height={180} />
+              <div className={styles.ProductInfoContainer}>
+                <p className={styles.ProductPrice}>
+                  <span>
+                    {product.price.currency ? 'R$ ' : ''}
+                    </span>
+                  <span>
+                    {product.price.amount}
+                  </span>
+                  <span>
+                    {product.price.decimals ? `,${product.price.decimals}` : ''}
+                  </span>
+                  {product.free_shipping && 
+                  <span>
+                    <Image className={styles.FreeShippingTag} src="/ic_shipping.png" width={18} height={18} alt="Frete grátis"/>
+                  </span>
+                  }
+                </p>
+                <h2 className={styles.ProductTitle}>{product.title}</h2>
+                <p>{product.condition.toLowerCase() !== 'new' ? 'Usado' : ''}</p>
+                
+              </div>
             </Link>
           </li>
         ))}
-      </ul>
+      </ol>
+      
+
     </div>
   );
 };

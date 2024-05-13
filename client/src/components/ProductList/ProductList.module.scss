@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss"; 
+
+
+.ProductListContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    .BreadCrumb{
+        display: flex;
+        margin: 16px 0;
+        font-size: 14px;
+        color: #999;
+        li{
+            display: flex;
+            align-items: center;
+            &:after{
+                content: ">";
+                margin: 0 10px;
+            }
+            &:last-child{
+                &:after{
+                    content: '';
+                }
+            }
+        }
+        
+    }
+    .ProductList{
+        max-width: 1000px;
+        width: 100%;
+        .Product{
+            max-width: 1000px;
+            background-color: #fff;
+            border-bottom: thin solid $bg-gray;
+            .ProductContainer{
+                display: flex;
+                text-decoration: none;
+                color: $base-black;
+                padding: 16px;
+                .ProductImage{
+                border-radius: 4px;
+                }
+                .ProductInfoContainer{
+                    flex: 1;
+                    margin-left: 16px;
+                    .ProductPrice{
+                        font-size: 24px;
+                        margin-bottom: 32px;
+                    }
+                    .FreeShippingTag{
+                        margin-left: 8px;
+                    }
+                    .ProductTitle{
+                        max-width: 300px;
+                        font-size: 18px;
+                    }
+
+        
+                }
+            }
+        
+        }
+    }
+}
