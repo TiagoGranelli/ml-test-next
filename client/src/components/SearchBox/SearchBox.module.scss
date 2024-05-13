@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss"; 
+
+.SearchBox{
+    background: $primary-color;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .SearchBoxContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+    .logo{
+        //
+    }
+    .SearchInput{
+        flex: 1;
+        border: none;
+        padding: 0 15px;
+        font-size: 18px;
+        border-radius: 4px 0 0 4px;
+        height: 41px;
+        margin-left: 30px;
+        &:focus{
+            outline: none;
+        }
+    }
+    .SearchButton{
+        padding: 10px 15px;
+        background: #EEEEEE;
+        border: none;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0; 
+    }
+}
